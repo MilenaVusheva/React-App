@@ -1,0 +1,44 @@
+h3 {
+    text-align: center;
+    color: rgb(150, 86, 86);
+    font-weight: bold;
+}
+
+.otherPet {
+    margin: 15px;
+    display: inline-block;
+    text-align: center;
+    padding: 30px 60px;
+    width: 30%;
+    box-shadow: -8px -2px 28px -8px #000000;
+}
+
+.img {
+    border-radius: 4px;
+    border: 2px solid rgb(150, 86, 86);
+    box-shadow: -8px -2px 28px -8px #000000;
+    width: 300px;
+    height: 200px;
+    padding: 4px;
+}
+
+.img:hover {
+    opacity: 0.60;
+}
+
+.nopets {
+    text-align: center;
+}
+
+.totalLikes {
+    font-size: large;
+    float: left;
+}
+.creator{
+    font-size: large;
+    float: right;
+}
+.category{
+    font-size: large;
+    text-align: center;
+}

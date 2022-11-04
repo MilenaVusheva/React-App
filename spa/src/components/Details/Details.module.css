@@ -1,0 +1,59 @@
+.backButton {
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0.5rem;
+    background-color: rgb(150, 86, 86);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-block-end: 1.5rem;
+}
+.backButton:hover{
+    color: #FFFFFF;
+    font-size: x-large;
+}
+
+.description {
+    height: 100px;
+    resize: none;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.button {
+    text-decoration: none;
+    color: black;
+    border-color: #f44336;
+    border-radius: 8px;
+    padding: 8px 16px;
+    line-height: 18px;
+    margin: 0.5rem;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5ch;
+}
+
+.button:hover{
+    font-size: large;
+    border-color:gray;
+}
+.likes {
+    text-align: center;
+}
+
+.img {
+    position: relative;
+    border-radius: 4px;
+    padding: 24px;
+    background: #FFFFFF;
+    margin-bottom: 24px;
+    width: 50%;
+}
+.actions{
+    text-align: center;
+}

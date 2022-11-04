@@ -1,0 +1,48 @@
+/* .register.Form {
+    width: 30%;
+	padding: 0.5rem 1rem;
+	left: -1px;
+	top: -1.4rem;
+	position: absolute
+}
+    .register.Page{ 
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 30px;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+} */
+.form{
+    font-size: 20px;
+    padding: 30px;
+    text-align: left;
+    font-family:Georgia;
+    right: 0;
+    top: 40px;
+    display: block;
+    background: #ddd;
+    /* border-radius: 2px; */
+    box-shadow: 1px 1px 9px rgb(0 0 0 / 80%);
+    position: absolute;
+    margin: 3em;
+    border-radius: 20px;
+}
+.legend{
+    text-align: center;
+}
+.submit{
+    background-color: #ddd; 
+    border-radius: 0.5rem;
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    
+}
+.submit:hover{
+    background-color:black;
+    color: #ddd;
+}
