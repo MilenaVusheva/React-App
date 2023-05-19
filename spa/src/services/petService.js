@@ -2,8 +2,8 @@ import * as request from './requester';
 
 const baseUrl = 'http://localhost:3030/api';
 
-export const getAll = () => {
-    return request.get(`${baseUrl}/pets`)
+export const getAll = (selectedCategory,search) => {
+    return request.get(`${baseUrl}/pets?category=${selectedCategory.toString()}&search=${search}`)
 };
 
 export const getMyPets = (userId) => {
