@@ -1,14 +1,25 @@
 const router = require('express').Router();
 const petService = require('../services/petService');
 const { isAuth } = require('../middleware/auth');
-const {isOwnerPet} = require('../middleware/petAuth')
-const Pet = require('../models/Pet');
 
-
-
-//Retrieve all Pets from the database.
 router.get('/', (req, res) => {
-  petService.getAll()
+  
+  let category = req.query.category || "All";
+  const search = req.query.search || "";
+
+  const defaultCategories = [
+    'cat',
+    'dog',
+    'parrot',
+    'horse',
+    'other',
+  ];
+
+  category === 'All'
+    ? (category = [...defaultCategories])
+    : (category = req.query.category.split(','));
+  
+  petService.getAll(category,search)
     .then(pets => {
       // console.log(pets)
       res.status(200).json(pets)
@@ -25,15 +36,12 @@ router.get('/:userId', (req, res) => {
 
 router.get('/details/:petId', (req, res) => {
   petService.getOne(req.params.petId)
- 
- //let isOwn = pet.owner == req.user._id
     .then(pet => {
      // console.log(pet)
       res.status(200).json(pet)
     })
 });
 
-// Create and Save a new Pet
 router.post('/create', isAuth, (req, res) => {
   //console.log(req.body)
   //console.log(req.user)
@@ -44,28 +52,7 @@ router.post('/create', isAuth, (req, res) => {
     });
 });
 
-// Find a single Pet with an id
-// router.get('/likes/:petId', async (req, res) => {
-
-//   await petService.getPetLikes(req.params.petId)
-//     //let isOwn = pet.owner == req.user._id
-
-//     .then(pet => {
-//       console.log(pet)
-//       if (!pet)
-//         res.status(404)
-//           .json({ message: "Not found Pet" });
-//       else res.json(pet);
-//     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ message: "Error retrieving Pet" });
-  //   });
-//});
-// Update a Pet by the id in the request
 router.put('/details/edit/:petId',isAuth, (req, res) => {
-
   petService.updateOne(req.params.petId, req.body)
     .then(data => {
       if (!data) {
@@ -78,9 +65,8 @@ router.put('/details/edit/:petId',isAuth, (req, res) => {
       res.status(500)
     })
 });
-// Delete a Pet with the specified id in the request
-router.delete('/details/:petId',isAuth, (req, res) => {
 
+router.delete('/details/:petId',isAuth, (req, res) => {
   petService.deleteOne(req.params.petId)
     .then(pet => {
       if (req.user._id != pet.owner) {
@@ -108,18 +94,7 @@ petService.likePet(req.params.userId , req.params.petId)
        message: 'Product liked successfully.',
     })
    })
+});
 
-//   // petService.likePet(req.params.petId, req.params.userId)
-//   //   .then(likedPet => {
-//   //     res.json(likedPet)
-//   //   })
-})
 
-// router.post('/likes', (req, res) => {
-//   petService.likePet(req.params.petId, req.params.userId)
-//     .then(likedPet => {
-//       res.json({likedPet})
-//     });
-
-// })
 module.exports = router;
